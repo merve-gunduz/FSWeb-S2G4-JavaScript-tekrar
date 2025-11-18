@@ -69,7 +69,7 @@ function CemberinAlani(yaricap, piDegeri) {
 }
 
 
-
+console.log("CemberinAlani(15, pi):", CemberinAlani(15, pi));
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* 	GÖREV 3:
@@ -90,7 +90,7 @@ function CemberinAlani(yaricap, piDegeri) {
 */
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
-
+console.log("sayilar uzunluğu:", sayilar.length);
 let ucetambolunenler,
   enkucuk,
   enbuyuk,
@@ -101,28 +101,67 @@ let ucetambolunenler,
 
 // 3a çözümü
 
-/* kodlar buraya */
+enkucuk = sayilar[0];
+enbuyuk = sayilar[0];
+
+for (let i = 1; i < sayilar.length; i++) {
+  const sayi = sayilar[i];
+  if (sayi < enkucuk) {
+    enkucuk = sayi;
+  }
+  if (sayi > enbuyuk) {
+    enbuyuk = sayi;
+  }
+}
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce(
+  (toplam, sayi) => toplam + sayi,
+  0
+);
 
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter((sayi) => sayi < 500);
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = [...besyuzdenkucuksayilar].sort((a, b) => a - b);
 
 // 3f çözümü
 
-/* kodlar buraya */
+tekraredensayilar = [];
+const frekans = {};
 
+sayilar.forEach((sayi) => {
+  const key = sayi; // sayı zaten number, key olarak kullanılabilir
+  if (!frekans[key]) {
+    frekans[key] = 1;
+  } else {
+    frekans[key]++;
+  }
+});
+
+for (const key in frekans) {
+  if (Object.prototype.hasOwnProperty.call(frekans, key)) {
+    const adet = frekans[key];
+    if (adet > 1) {
+      tekraredensayilar.push(
+        `${key} sayısı ${adet} kere tekrar edilmiştir`
+      );
+    }
+  }
+}
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
 function sa() {
